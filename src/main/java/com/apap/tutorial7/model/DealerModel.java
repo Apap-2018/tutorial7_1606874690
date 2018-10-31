@@ -20,6 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "dealer")
 public class DealerModel implements Serializable {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -35,7 +36,7 @@ public class DealerModel implements Serializable {
 	private String noTelp;
 
 	@OneToMany(mappedBy = "dealer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	//@JsonIgnore	
+	@JsonIgnore	
 	private List<CarModel> listCar;
 
 	public long getId() {

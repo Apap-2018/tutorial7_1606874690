@@ -31,15 +31,13 @@ public class CarController {
 
 	@PostMapping()
 	private CarModel addCarSubmit(@RequestBody CarModel car) {
-	//DealerModel dealer = dealerService.getDealerDetailById(car.getId()).get();
-	//	car.setDealer(dealer);
 		return carService.addCar(car);
 	}
 
 	@GetMapping(value = "/{carId}")
 	private CarModel viewCar(@PathVariable ("carId") long carId, Model model) {
 		CarModel car = carService.getCarDetailById(carId).get();
-		car.setDealer(null);
+	//	car.setDealer(null);
 		return car;
 	}
 
@@ -69,7 +67,7 @@ public class CarController {
 		car.setType(type);
 		car.setPrice(Long.parseLong(price));
 		car.setAmount(Integer.parseInt(amount));
-	//	car.setDealerId(dealerId);
+
 		carService.updateCar(car);
 		return "Car update success";
 		
@@ -78,10 +76,10 @@ public class CarController {
 	@GetMapping()
 	private List<CarModel> viewAllCar(Model model) {
 		List<CarModel> listCar = carService.viewAllCar();
-//		
-		for (int i = 0; i < listCar.size(); i++) {
-			listCar.get(i).setDealer(null);
-		}
+
+//		for (int i = 0; i < listCar.size(); i++) {
+//			listCar.get(i).setDealer(null);
+//		}
 		
 		return listCar;
 	}
